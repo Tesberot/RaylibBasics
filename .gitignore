@@ -27,7 +27,7 @@ Win32/
 *.exe
 *.dll
 *.exp
-*.lib
+
 
 # =========================
 # CMake (if used)
