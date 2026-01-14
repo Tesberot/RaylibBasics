@@ -12,7 +12,7 @@ int main()
     const int screenWidth = 800;
     const int screenHeight = 450;
     Vector2 pos = { (float)screenWidth / 2, (float)screenHeight / 2 };
-    float speed = 4.0f;
+    float speed = 5.0f;
     
     
     
