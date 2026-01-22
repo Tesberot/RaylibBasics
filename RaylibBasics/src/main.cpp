@@ -4,9 +4,17 @@
 #include "raylib.h"
 #include "imgui.h"
 #include "rlImGui.h"
+#include "Engine.h"
 
 int main()
 {
+
+	//Engine engine;
+	//engine.intialize();
+	//engine.run();
+	//engine.shutdown();
+	
+	
     // Initialization
         //--------------------------------------------------------------------------------------
     const int screenWidth = 800;
@@ -19,11 +27,12 @@ int main()
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
     rlImGuiSetup(true);
-    Image image = LoadImage("Assets/textures/apple.png");
+    Image image = LoadImage("assets/textures/apple.png");
     Texture2D texture = LoadTextureFromImage(image);
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
-
+	InitAudioDevice();          // Initialize audio device
+	Sound snd = LoadSound("assets/audio/e_sound.wav");
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
@@ -38,7 +47,7 @@ int main()
 		if (IsKeyDown(KEY_LEFT)) pos.x -= speed;
 		if (IsKeyDown(KEY_UP)) pos.y -= speed;
         if (IsKeyDown(KEY_DOWN)) pos.y += speed;
-
+		if (IsKeyPressed(KEY_SPACE)) PlaySound(snd);
         
         BeginDrawing();
 
@@ -59,7 +68,7 @@ int main()
         //----------------------------------------------------------------------------------
     }
 
-
+	UnloadSound(snd);
     rlImGuiShutdown();
     // De-Initialization
     //--------------------------------------------------------------------------------------
